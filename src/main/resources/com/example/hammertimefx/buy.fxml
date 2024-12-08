@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hammertimefx.BuyController">
+   <children>
+      <ScrollPane layoutY="57.0" prefHeight="450.0" prefWidth="800.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1250.0" prefWidth="785.0" />
+        </content>
+      </ScrollPane>
+      <Label layoutX="268.0" layoutY="10.0" text="HAMMER TIME">
+         <font>
+            <Font name="Monospaced Regular" size="40.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

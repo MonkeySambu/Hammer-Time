@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hammertimefx.GuiController">
+   <children>
+      <Button fx:id="loginB" layoutX="338.0" layoutY="284.0" mnemonicParsing="false" onAction="#initialize" text="accedi">
+         <font>
+            <Font name="Monospaced Regular" size="25.0" />
+         </font></Button>
+      <Label layoutX="248.0" layoutY="6.0" prefHeight="54.0" prefWidth="305.0" text="HAMMER TIME" textAlignment="CENTER">
+         <font>
+            <Font name="Monospaced Regular" size="40.0" />
+         </font></Label>
+      <Label layoutX="248.0" layoutY="149.0" prefHeight="54.0" prefWidth="305.0" text="Username" textAlignment="CENTER">
+         <font>
+            <Font name="Monospaced Regular" size="20.0" />
+         </font>
+      </Label>
+      <TextField layoutX="248.0" layoutY="203.0" prefHeight="54.0" prefWidth="305.0">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </TextField>
+   </children>
+</AnchorPane>

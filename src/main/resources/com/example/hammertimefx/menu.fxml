@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hammertimefx.MenuController">
+   <children>
+      <Button fx:id="buyB" layoutX="225.0" layoutY="120.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="350.0" text="ACQUISTA" />
+      <Button fx:id="addB" layoutX="225.0" layoutY="294.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="350.0" text="AGGIUNGI" />
+      <Label layoutX="268.0" layoutY="14.0" text="HAMMER TIME" textAlignment="CENTER">
+         <font>
+            <Font name="Monospaced Regular" size="40.0" />
+         </font></Label>
+   </children>
+</AnchorPane>
