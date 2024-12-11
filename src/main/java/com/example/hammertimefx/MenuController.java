@@ -33,7 +33,7 @@ public class MenuController {
         addB.setOnAction(event -> {
             try {
                 // Carica la seconda scena
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("add.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("sell.fxml"));
                 Parent secondRoot = loader.load();
                 Scene secondScene = new Scene(secondRoot, 800, 500);
 
