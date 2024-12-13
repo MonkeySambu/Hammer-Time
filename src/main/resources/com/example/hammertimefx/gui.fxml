@@ -19,7 +19,7 @@
             <Font name="Monospaced Regular" size="20.0" />
          </font>
       </Label>
-      <TextField layoutX="248.0" layoutY="203.0" prefHeight="54.0" prefWidth="305.0">
+      <TextField fx:id="user" layoutX="248.0" layoutY="203.0" prefHeight="54.0" prefWidth="305.0">
          <font>
             <Font size="25.0" />
          </font>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hammertimefx.SellController">
+   <children>
+      <Button accessibleRole="TREE_VIEW" layoutX="638.0" layoutY="371.0" mnemonicParsing="false" text="Button" />
+      <DatePicker layoutX="568.0" layoutY="238.0" />
+      <ImageView fx:id="imageNew" fitHeight="150.0" fitWidth="200.0" layoutX="58.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true" />
+      <TextArea layoutX="352.0" layoutY="163.0" prefHeight="200.0" prefWidth="200.0" />
+      <TextField layoutX="352.0" layoutY="122.0" />
+      <Label layoutX="230.0" layoutY="67.0" text="Label" />
+      <Label layoutX="202.0" layoutY="105.0" text="Label" />
+      <Label layoutX="324.0" layoutY="50.0" text="Label" />
+      <Spinner editable="true" layoutX="378.0" layoutY="396.0" mouseTransparent="true" />
+   </children>
+</AnchorPane>
