@@ -9,7 +9,79 @@ import java.util.HashMap;
 
 public class Server {
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) {
+        try {
+            ServerSocket serverSocket =new ServerSocket(12345);
+            while(true) {
+                Socket socket = serverSocket.accept();
+                ClientThread ct = new ClientThread(socket);
+                ClientThread.client_list.add(ct);
+                ct.start();
+                System.out.println("Cliente connesso");
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+}
+
+class ClientThread extends Thread {
+    private Socket socket;
+    private BufferedReader in;
+    private PrintWriter out;
+    public static ArrayList<ClientThread> client_list= new ArrayList<>();
+    public static ArrayList<String> history_list= new ArrayList<>();
+
+    //Mappa per memorizzare i dati del client
+    private static HashMap<String, String> datiCliente = new HashMap<>();
+
+    public ClientThread(Socket s) {
+        socket = s;
+        try {
+            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            out= new PrintWriter(new OutputStreamWriter(socket.getOutputStream()),true);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    public void run() {
+        try{
+            String nomeClient = in.readLine();
+            System.out.println("Cliente " + nomeClient + " connesso da " + socket.getInetAddress() + ":" + socket.getPort());
+
+            //riceve i dati del prodotto
+            String infoProdotto = in.readLine();
+            if (infoProdotto != null) {
+                System.out.println("Dati ricevuti dal client: " + infoProdotto);
+                String[] dettagliProdotto = infoProdotto.split(";");
+                if(dettagliProdotto.length == 3) {
+                    String nomeProdotto = dettagliProdotto[0];
+                    String descProdotto = dettagliProdotto[1];
+                    String prezzoProdotto = dettagliProdotto[2];
+
+                    //Salva i dati del client
+                    datiCliente.put(nomeClient, "Prodotto: " + nomeProdotto + ", Descrizione: " + descProdotto + " Prezzo: " + prezzoProdotto);
+                    history_list.add(nomeClient);
+
+                    //invia la risposta al client
+                    out.println("Dati ricevuti: " + datiCliente.get(nomeClient));
+                }else{
+                    out.println("Nessun dato ricevuto dal client.");
+                }
+            }
+            //chiude la connessione
+            this.socket.close();
+        }catch (IOException e){
+            System.err.println("Errore nella connessione: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+}
+
+
+    /*public static void main(String[] args) throws Exception{
 
         int port = 12345;
         ServerSocket serverSocket = new ServerSocket(port);
@@ -68,7 +140,7 @@ public class Server {
 
     }*/
 
-}
+
 
 
 /*class ClientThread extends Thread{
