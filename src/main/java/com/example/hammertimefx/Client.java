@@ -9,10 +9,17 @@ public class Client {
 
     public static void main(String[] args) {
         try (Socket socket = new Socket(SERVER_ADDRESS, SERVER_PORT);
-             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-             BufferedReader userInput = new BufferedReader(new InputStreamReader(System.in))) {
+            DataOutputStream out = new DataOutputStream(socket.getOutputStream());
+            DataInputStream in = new DataInputStream(socket.getInputStream());
+            BufferedReader userInput = new BufferedReader(new InputStreamReader(System.in))) {
+            
+            //inserimento nome
+            System.out.println("Inserisci il tuo nome: ");
+            String nomeClient = userInput.readLine();
+            out.writeUTF(nomeClient); //invia il nome del client al server
 
+
+            //inserimento prodotto
             System.out.println("Inserisci il nome del prodotto: ");
             String nome = userInput.readLine();
             System.out.println("Inserisci la descrizione del prodotto: ");
@@ -20,9 +27,11 @@ public class Client {
             System.out.println("Inserisci il prezzo del prodotto: ");
             String prezzo = userInput.readLine();
 
-            Prodotto prodotto = new Prodotto(nome, descrizione, prezzo);
+            out.writeUTF(nome + ";" + descrizione + ";" + prezzo); //invia le informazioni sul prodotto
 
-            out.println(prodotto.toString());
+            //risposta ricevuta da parte del server
+            String risposta = in.readUTF();
+            System.out.println("Risposta dal server: " + risposta);
         } catch (IOException e) {
             e.printStackTrace();
         }
