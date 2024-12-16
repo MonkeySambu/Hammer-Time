@@ -6,6 +6,7 @@ public class Prodotto {
     private String nome;
     private String descrizione;
     private String prezzo;
+    private LocalDate data;
 
     public Prodotto(String nome, String descrizione, String prezzo) {
         this.nome = nome;

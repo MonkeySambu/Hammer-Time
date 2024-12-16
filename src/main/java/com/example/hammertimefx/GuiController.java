@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 public class GuiController {
     @FXML
     private Button loginB;
+
     @FXML
     private TextField user;
 
@@ -20,6 +21,7 @@ public class GuiController {
             try {
                 String s= user.getText();
                 System.out.println(s);
+                GuiApp.out.println(s);
                 // Carica la seconda scena
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("menu.fxml"));
                 Parent secondRoot = loader.load();

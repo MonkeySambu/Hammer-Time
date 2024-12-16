@@ -8,7 +8,7 @@
    <children>
       <ScrollPane layoutY="57.0" prefHeight="450.0" prefWidth="800.0">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1250.0" prefWidth="785.0" />
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1250.0" prefWidth="785.0" fx:id="pane" />
         </content>
       </ScrollPane>
       <Label layoutX="268.0" layoutY="10.0" text="HAMMER TIME">

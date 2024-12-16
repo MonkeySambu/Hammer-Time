@@ -25,6 +25,7 @@ public class MenuController {
                 // Cambia scena nello stesso stage
                 Stage stage = (Stage) buyB.getScene().getWindow();
                 stage.setScene(secondScene);
+                GuiApp.out.println(1);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -40,6 +41,7 @@ public class MenuController {
                 // Cambia scena nello stesso stage
                 Stage stage = (Stage) addB.getScene().getWindow();
                 stage.setScene(secondScene);
+                GuiApp.out.println(2);
             } catch (Exception e) {
                 e.printStackTrace();
             }

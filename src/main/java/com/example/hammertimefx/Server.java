@@ -29,53 +29,48 @@ class ClientThread extends Thread {
     private Socket socket;
     private BufferedReader in;
     private PrintWriter out;
-    public static ArrayList<ClientThread> client_list= new ArrayList<>();
-    public static ArrayList<String> history_list= new ArrayList<>();
-
-    //Mappa per memorizzare i dati del client
-    private static HashMap<String, String> datiCliente = new HashMap<>();
+    public static ArrayList<ClientThread> client_list = new ArrayList<>();
+    public static ArrayList<String> history_list = new ArrayList<>();
 
     public ClientThread(Socket s) {
         socket = s;
-        try {
-            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            out= new PrintWriter(new OutputStreamWriter(socket.getOutputStream()),true);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 
 
     public void run() {
-        try{
+        try {
+            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true);
+
+            System.out.println("Iniciando cliente");
             String nomeClient = in.readLine();
             System.out.println("Cliente " + nomeClient + " connesso da " + socket.getInetAddress() + ":" + socket.getPort());
+            // salvo su databese
 
-            //riceve i dati del prodotto
-            String infoProdotto = in.readLine();
-            if (infoProdotto != null) {
-                System.out.println("Dati ricevuti dal client: " + infoProdotto);
-                String[] dettagliProdotto = infoProdotto.split(";");
-                if(dettagliProdotto.length == 3) {
-                    String nomeProdotto = dettagliProdotto[0];
-                    String descProdotto = dettagliProdotto[1];
-                    String prezzoProdotto = dettagliProdotto[2];
+            int scelta = Integer.parseInt(in.readLine());
+            System.out.println(scelta);
+            switch (scelta) {
+                case (1):
 
-                    //Salva i dati del client
-                    datiCliente.put(nomeClient, "Prodotto: " + nomeProdotto + ", Descrizione: " + descProdotto + " Prezzo: " + prezzoProdotto);
-                    history_list.add(nomeClient);
+                    break;
+                case (2):
+                    String nome = in.readLine();
+                    String descrizione = in.readLine();
+                    String prezzo = in.readLine();
+                    String immagine = in.readLine();
+                    String data = in.readLine();;
+                    String stato="disponibile";
+                    //salvo su DB
+                    Prodotto p = new Prodotto(nome, descrizione, prezzo);
+                    break;
 
-                    //invia la risposta al client
-                    out.println("Dati ricevuti: " + datiCliente.get(nomeClient));
-                }else{
-                    out.println("Nessun dato ricevuto dal client.");
-                }
             }
-            //chiude la connessione
+
+
+
             this.socket.close();
-        }catch (IOException e){
-            System.err.println("Errore nella connessione: " + e.getMessage());
-            e.printStackTrace();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }
