@@ -3,6 +3,7 @@ package com.example.hammertimefx;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.HashMap;
@@ -29,6 +30,7 @@ class ClientThread extends Thread {
     private Socket socket;
     private BufferedReader in;
     private PrintWriter out;
+    private ObjectOutput output;
     public static ArrayList<ClientThread> client_list = new ArrayList<>();
     public static ArrayList<String> history_list = new ArrayList<>();
 
@@ -41,7 +43,8 @@ class ClientThread extends Thread {
         try {
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true);
-
+            output= new ObjectOutputStream(socket.getOutputStream());
+            System.out.println(GestioneDatabase.connect());
             System.out.println("Iniciando cliente");
             String nomeClient = in.readLine();
             System.out.println("Cliente " + nomeClient + " connesso da " + socket.getInetAddress() + ":" + socket.getPort());
@@ -51,6 +54,20 @@ class ClientThread extends Thread {
             System.out.println(scelta);
             switch (scelta) {
                 case (1):
+                    ArrayList<Prodotto> prodotti = GestioneDatabase.readProdotti();
+                    ArrayList<Prodotto> prodDisp = new ArrayList<>();
+                    LocalDate date = LocalDate.now();
+                    for (Prodotto p: prodotti) {
+                        boolean scaduto= (date.isBefore(p.getData()) || date.isEqual(p.getData()));
+                        if (scaduto) {
+                            prodDisp.add(p);
+                        }
+                    }
+                    output.writeObject(prodDisp);
+
+                    int localId=Integer.parseInt(in.readLine());
+                    String localPrezzo= in.readLine();
+                    GestioneDatabase.updateData(localPrezzo,localId);
 
                     break;
                 case (2):
@@ -59,15 +76,13 @@ class ClientThread extends Thread {
                     String prezzo = in.readLine();
                     String immagine = in.readLine();
                     String data = in.readLine();;
-                    String stato="disponibile";
+                    //String stato="disponibile";
                     //salvo su DB
-                    Prodotto p = new Prodotto(nome, descrizione, prezzo);
+                    Prodotto p = new Prodotto(nome,descrizione,prezzo,nomeClient,immagine,LocalDate.parse(data));
+                    GestioneDatabase.insertData(p);
                     break;
 
             }
-
-
-
             this.socket.close();
         } catch (IOException e) {
             throw new RuntimeException(e);

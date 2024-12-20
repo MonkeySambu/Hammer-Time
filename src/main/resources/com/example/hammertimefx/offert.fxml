@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="150.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hammertimefx.OffertController">
+   <children>
+      <Button layoutX="199.0" layoutY="105.0" mnemonicParsing="false" text="Annulla" onAction="#handleCancel"/>
+      <Button layoutX="51.0" layoutY="105.0" mnemonicParsing="false" text="OK" onAction="#handleOk" />
+      <Spinner editable="true" layoutX="69.0" layoutY="62.0" fx:id="prezzo"/>
+      <Label layoutX="83.0" layoutY="28.0" text="Inserire offerta nuova" />
+   </children>
+</AnchorPane>

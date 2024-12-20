@@ -7,19 +7,24 @@
 
 <AnchorPane prefHeight="300.0" prefWidth="785.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hammertimefx.ItemController">
    <children>
-      <ImageView fitHeight="225.0" fitWidth="256.0" layoutX="14.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true" />
-      <Button layoutX="284.0" layoutY="254.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="317.0" text="Button" />
-      <Label layoutX="528.0" layoutY="103.0" text="Venditore: " />
-      <Label layoutX="528.0" layoutY="147.0" text="Prezzo prodotto " />
+      <ImageView fx:id="image" fitHeight="225.0" fitWidth="256.0" layoutX="14.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true" />
+      <Button layoutX="284.0" layoutY="254.0" mnemonicParsing="false" onAction="#offri" prefHeight="25.0" prefWidth="317.0" text="Fai Offerta" />
+      <Label layoutX="471.0" layoutY="103.0" text="Venditore: " />
+      <Label layoutX="471.0" layoutY="147.0" text="Prezzo prodotto " />
       <Label layoutX="284.0" layoutY="94.0" text="Descrizione prodotto" />
-      <TextArea editable="false" layoutX="284.0" layoutY="122.0" prefHeight="113.0" prefWidth="164.0" wrapText="true" />
-      <TextField editable="false" layoutX="610.0" layoutY="99.0" />
-      <TextField alignment="CENTER" editable="false" layoutX="9.0" layoutY="14.0" prefHeight="25.0" prefWidth="755.0" text="CIAO">
+      <TextArea fx:id="descItem" editable="false" layoutX="284.0" layoutY="122.0" prefHeight="113.0" prefWidth="164.0" wrapText="true" />
+      <TextField fx:id="seller" editable="false" layoutX="601.0" layoutY="99.0" />
+      <TextField fx:id="product" alignment="CENTER" editable="false" layoutX="140.0" layoutY="14.0" prefHeight="33.0" prefWidth="624.0">
          <font>
             <Font name="Monospaced Regular" size="18.0" />
          </font></TextField>
-      <TextField editable="false" layoutX="623.0" layoutY="143.0" prefHeight="25.0" prefWidth="112.0" />
-      <Label layoutX="528.0" layoutY="178.0" text="Data Scadenza" />
-      <TextField editable="false" layoutX="623.0" layoutY="175.0" prefHeight="25.0" prefWidth="112.0" />
+      <TextField fx:id="price" editable="false" layoutX="601.0" layoutY="150.0" prefHeight="25.0" prefWidth="112.0" />
+      <Label layoutX="471.0" layoutY="179.0" text="Data Scadenza" />
+      <TextField fx:id="date" editable="false" layoutX="601.0" layoutY="182.0" prefHeight="25.0" prefWidth="112.0" />
+      <TextField fx:id="num" alignment="CENTER" editable="false" layoutX="14.0" layoutY="14.0" prefHeight="33.0" prefWidth="112.0">
+         <font>
+            <Font name="Monospaced Regular" size="18.0" />
+         </font>
+      </TextField>
    </children>
 </AnchorPane>

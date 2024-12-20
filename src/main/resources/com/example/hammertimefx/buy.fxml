@@ -8,7 +8,10 @@
    <children>
       <ScrollPane layoutY="57.0" prefHeight="450.0" prefWidth="800.0">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1250.0" prefWidth="785.0" fx:id="pane" />
+          <AnchorPane fx:id="pane" minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="785.0">
+               <children>
+                  <VBox fx:id="vBox" layoutY="6.0" prefHeight="732.0" prefWidth="782.0" />
+               </children></AnchorPane>
         </content>
       </ScrollPane>
       <Label layoutX="268.0" layoutY="10.0" text="HAMMER TIME">
@@ -16,5 +19,6 @@
             <Font name="Monospaced Regular" size="40.0" />
          </font>
       </Label>
+      <Button fx:id="bottone" layoutX="686.0" layoutY="22.0" mnemonicParsing="false" onAction="#loadProduct" text="Mostra prodoti" />
    </children>
 </AnchorPane>

@@ -22,10 +22,11 @@ public class MenuController {
                 Parent secondRoot = loader.load();
                 Scene secondScene = new Scene(secondRoot, 800, 500);
 
+                GuiApp.out.println(1);
+
                 // Cambia scena nello stesso stage
                 Stage stage = (Stage) buyB.getScene().getWindow();
                 stage.setScene(secondScene);
-                GuiApp.out.println(1);
             } catch (Exception e) {
                 e.printStackTrace();
             }
